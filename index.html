@@ -15,8 +15,12 @@
   subscribeKey: 'sub-c-f86566a6-6cc9-11e9-a1d6-2a8c316da507'
   });
 
-  // Publish a simple message to the “demo_tutorial” channel pubnub:
+function sendMess() {
 
+  pubnubDemo.publish({
+    message: { "color" : "blue" },
+    channel: 'north'
+  });
 
     pubnubDemo.addListener({
       message: function(message){
@@ -25,11 +29,11 @@
     })
 
     pubnubDemo.subscribe({
-    channels: ['demo_tutorial']
+    channels: ['north']
     });
 
 
-
+}
 
     // Get event data
   function deviceOrientationListener(event) {
