@@ -19,13 +19,14 @@
     event.preventDefault()
     var message = document.getElementById('message-input').value
     document.getElementById('message-input').value = '';
+    var channel = document.getElementById('heading').innerHTML
     console.log(message)
     pubnubDemo.publish(
     {
         message: {
             such: message
         },
-        channel: 'north',
+        channel: channel,
         sendByPost: false, // true to send via post
         storeInHistory: false, //override default storage options
         meta: {
@@ -56,12 +57,16 @@
         var messbubble = document.createElement('div')
         messbubble.className = 'messbubble'
         messbubble.innerHTML = message.message.such
-        document.getElementById('mess').append(messbubble);
+
+
+        if (message.channel == document.getElementById('heading').innerHTML){
+          document.getElementById('mess').append(messbubble);
+        }
       }
     })
 
     pubnubDemo.subscribe({
-    channels: ['north']
+    channels: ['North', 'West', 'East', 'South']
     });
 
 
