@@ -11,32 +11,6 @@
 <script type="text/javascript">
   console.log('hejehjjh')
 
-  $('#inputForm').submit(event =>
-
-    function() {
-      pubnubDemo.publish(
-      {
-          message: {
-              such: $('#text-message').val()
-          },
-          channel: 'demo_tutorial',
-          sendByPost: false, // true to send via post
-          storeInHistory: false, //override default storage options
-          meta: {
-              "cool": "meta"
-          }   // publish extra meta with the request
-      },
-      function (status, response) {
-          if (status.error) {
-              // handle error
-              console.log(status)
-          } else {
-              console.log("message Published w/ timetoken", response.timetoken)
-          }
-      }
-  );
-  })
-
   var pubnubDemo = new PubNub({
   publishKey: 'pub-c-b3c83e84-5548-48ac-bb78-70aa483770db',
   subscribeKey: 'sub-c-f86566a6-6cc9-11e9-a1d6-2a8c316da507'
@@ -113,7 +87,7 @@
     else {
       alert("doesn't work")
     }
-  
+
 
 </script>
 
