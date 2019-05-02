@@ -9,6 +9,50 @@
 <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.7.js"></script>
 
 <script type="text/javascript">
+  console.log('hejehjjh')
+
+  var pubnubDemo = new PubNub({
+  publishKey: 'pub-c-b3c83e84-5548-48ac-bb78-70aa483770db',
+  subscribeKey: 'sub-c-f86566a6-6cc9-11e9-a1d6-2a8c316da507'
+  });
+
+  // Publish a simple message to the “demo_tutorial” channel pubnub:
+    pubnubDemo.publish(
+    {
+        message: {
+            such: 'tjena'
+        },
+        channel: 'north',
+        sendByPost: false, // true to send via post
+        storeInHistory: false, //override default storage options
+        meta: {
+            "cool": "meta"
+        }   // publish extra meta with the request
+    },
+
+    function (status, response) {
+        if (status.error) {
+            // handle error
+            console.log(status)
+        } else {
+            console.log("message Published w/ timetoken", response.timetoken)
+        }
+    }
+);
+
+
+
+    pubnubDemo.addListener({
+      message: function(message){
+        console.log(message)
+        document.getElementById('mess').innerHTML = message.message.such;
+      }
+    })
+
+    pubnubDemo.subscribe({
+    channels: ['north']
+    });
+
 
     // Get event data
     function deviceOrientationListener(event) {
@@ -57,6 +101,9 @@
 </script>
 
 <p id="heading"></p>
+
+
+<span id="mess"></span>
 
 </body>
 
