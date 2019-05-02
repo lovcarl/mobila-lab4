@@ -16,11 +16,15 @@
   subscribeKey: 'sub-c-f86566a6-6cc9-11e9-a1d6-2a8c316da507'
   });
 
-  // Publish a simple message to the “demo_tutorial” channel pubnub:
+  function sendmessage(event){
+    event.preventDefault()
+    var message = document.getElementById('message-input').value
+    document.getElementById('message-input').value = '';
+    console.log(message)
     pubnubDemo.publish(
     {
         message: {
-            such: 'tjena'
+            such: message
         },
         channel: 'north',
         sendByPost: false, // true to send via post
@@ -40,12 +44,20 @@
     }
 );
 
+  }
+
+  // Publish a simple message to the “demo_tutorial” channel pubnub:
+
+
 
 
     pubnubDemo.addListener({
       message: function(message){
         console.log(message)
-        document.getElementById('mess').innerHTML = message.message.such;
+        var messbubble = document.createElement('div')
+        messbubble.className = 'messbubble'
+        messbubble.innerHTML = message.message.such
+        document.getElementById('mess').append(messbubble);
       }
     })
 
@@ -66,7 +78,7 @@
             document.getElementById("heading").innerHTML = heading.toFixed([0]);
           }
           else {
-            alert("Your device is reporting relative alpha values, so this compass won't point north :(");
+            //alert("Your device is reporting relative alpha values, so this compass won't point north :(");
             var heading = 360 - alpha; //heading [0, 360)
             document.getElementById("heading").innerHTML = heading.toFixed([0]);
           }
@@ -101,6 +113,11 @@
 </script>
 
 <p id="heading"></p>
+
+<form id="message-form" onSubmit="sendmessage(event)">
+  <input type="text" id="message-input" placeholder="Ditt meddelande"></input>
+  <input type="submit"></input>
+  </form>
 
 
 <span id="mess"></span>
