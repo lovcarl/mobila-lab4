@@ -4,7 +4,7 @@
 <title>Lab 4</title>
 </head>
 
-<body
+<body>
 <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.7.js"></script>
 
 <script type="text/javascript">
@@ -12,7 +12,7 @@
 
   var pubnubDemo = new PubNub({
   publishKey: 'pub-c-b3c83e84-5548-48ac-bb78-70aa483770db',
-  subscribeKey: 'pub-c-b3c83e84-5548-48ac-bb78-70aa483770db'
+  subscribeKey: 'sub-c-f86566a6-6cc9-11e9-a1d6-2a8c316da507'
   });
 
   // Publish a simple message to the “demo_tutorial” channel pubnub:
@@ -27,6 +27,8 @@
     pubnubDemo.subscribe({
     channels: ['demo_tutorial']
     });
+
+
 
 
     // Get event data
