@@ -1,0 +1,58 @@
+html, body {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+
+p {
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+
+}
+
+
+#header {
+  background-color: white;
+  text-align: center;
+  padding: 5px;
+  max-width: 100%;
+}
+
+#mess {
+  flex-grow: 1;
+  background-color: #ccc;
+}
+
+#message-form{
+  display: flex;
+}
+
+#message-input {
+  flex-grow: 1;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.messbubble {
+
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+
+}

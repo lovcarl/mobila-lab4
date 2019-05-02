@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>Lab 4</title>
+
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -90,19 +92,23 @@
           // Change backgroud colour based on heading
           // Green for North and South, black otherwise
           if (heading > 315 || heading < 44) { //Allow +- 1 degree
-            document.body.style.backgroundColor = "green";
+            document.getElementById("button").style.backgroundColor = "green";
+            document.getElementById("header").style.backgroundColor = "green";
             document.getElementById("heading").innerHTML = "North"; // North
           }
           else if (heading > 135 && heading < 224){ //Allow +- 1 degree
-            document.body.style.backgroundColor = "blue";
+            document.getElementById("button").style.backgroundColor = "blue";
+            document.getElementById("header").style.backgroundColor = "blue";
             document.getElementById("heading").innerHTML = "South"; // South
           }
           else if (heading > 225 && heading < 314){ //Allow +- 1 degree
-            document.body.style.backgroundColor = "red";
+            document.getElementById("button").style.backgroundColor = "red";
+            document.getElementById("header").style.backgroundColor = "red";
             document.getElementById("heading").innerHTML = "West"; // South
           }
           else if (heading > 45 && heading < 134){ //Allow +- 1 degree
-            document.body.style.backgroundColor = "yellow";
+            document.getElementById("button").style.backgroundColor = "yellow";
+            document.getElementById("header").style.backgroundColor = "yellow";
             document.getElementById("heading").innerHTML = "East"; // South
           }
           else { // Otherwise, use near black
@@ -123,16 +129,19 @@
 
 
 </script>
-
+<header id="header">
 <p id="heading"></p>
+</header>
+
+<span id="mess"></span>
 
 <form id="message-form" onSubmit="sendmessage(event)">
   <input type="text" id="message-input" placeholder="Ditt meddelande"></input>
-  <input type="submit"></input>
+  <input type="submit" id="button"></input>
   </form>
 
 
-<span id="mess"></span>
+
 
 </body>
 
