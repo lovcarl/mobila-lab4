@@ -35,47 +35,30 @@ function sendMess() {
 
 }
 
-function init() {
-  //Find our div containers in the DOM
-  var dataContainerOrientation = document.getElementById('dataContainerOrientation');
-  var dataContainerMotion = document.getElementById('dataContainerMotion');
+// Get event data
+function deviceOrientationListener(event) {
+  var alpha   = event.alpha; //z axis rotation [0,360)
+  var beta     = event.beta; //x axis rotation [-180, 180]
+  var gamma   = event.gamma; //y axis rotation [-90, 90]
 
-  //Check for support for DeviceOrientation event
-  if(window.DeviceOrientationEvent) {
-    window.addEventListener('deviceorientation', function(event) {
-            var alpha = event.alpha;
-            var beta = event.beta;
-            var gamma = event.gamma;
 
-            if(alpha!=null || beta!=null || gamma!=null)
-              dataContainerOrientation.innerHTML = 'alpha: ' + alpha + '<br/>beta: ' + beta + '<br />gamma: ' + gamma;
-          }, false);
+  //Check if absolute values have been sent
+  if (typeof event.webkitCompassHeading !== "undefined") {
+    alpha = event.webkitCompassHeading; //for iOS devices
+    var heading = alpha
+    document.getElementById("heading").innerHTML = heading.toFixed([0]);
+  }
+  else {
+    alert("Your device is reporting relative alpha values, so this compass won't point north :(");
+    var heading = 360 - alpha; //heading [0, 360)
+    document.getElementById("heading").innerHTML = heading.toFixed([0]);
   }
 
-  // Check for support for DeviceMotion events
-  if(window.DeviceMotionEvent) {
-  window.addEventListener('devicemotion', function(event) {
-            var x = event.accelerationIncludingGravity.x;
-            var y = event.accelerationIncludingGravity.y;
-            var z = event.accelerationIncludingGravity.z;
-            var r = event.rotationRate;
-            var html = 'Acceleration:<br />';
-            html += 'x: ' + x +'<br />y: ' + y + '<br/>z: ' + z+ '<br />';
-            html += 'Rotation rate:<br />';
-            if(r!=null) html += 'alpha: ' + r.alpha +'<br />beta: ' + r.beta + '<br/>gamma: ' + r.gamma + '<br />';
-            dataContainerMotion.innerHTML = html;
-          });
-  }
-}
+
 
 </script>
 
-<div id="dataContainerOrientation">
-  No device orientation data
-</div>
-<div id="dataContainerMotion">
-  No device motion data
-</div>
+<p id="heading"></p>
 
 
 </body>
