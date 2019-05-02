@@ -84,16 +84,24 @@
 
           // Change backgroud colour based on heading
           // Green for North and South, black otherwise
-          if (heading > 359 || heading < 1) { //Allow +- 1 degree
+          if (heading > 315 || heading < 44) { //Allow +- 1 degree
             document.body.style.backgroundColor = "green";
-            document.getElementById("heading").innerHTML = "N"; // North
+            document.getElementById("heading").innerHTML = "North"; // North
           }
-          else if (heading > 179 && heading < 181){ //Allow +- 1 degree
-            document.body.style.backgroundColor = "green";
-            document.getElementById("heading").innerHTML = "S"; // South
+          else if (heading > 135 && heading < 224){ //Allow +- 1 degree
+            document.body.style.backgroundColor = "blue";
+            document.getElementById("heading").innerHTML = "South"; // South
+          }
+          else if (heading > 225 && heading < 314){ //Allow +- 1 degree
+            document.body.style.backgroundColor = "red";
+            document.getElementById("heading").innerHTML = "West"; // South
+          }
+          else if (heading > 45 && heading < 134){ //Allow +- 1 degree
+            document.body.style.backgroundColor = "yellow";
+            document.getElementById("heading").innerHTML = "East"; // South
           }
           else { // Otherwise, use near black
-            document.body.style.backgroundColor = "#161616";
+            document.body.style.backgroundColor = "#CCCCCC";
           }
         }
 
