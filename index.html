@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+</head>
+
+<body>
+The content of the document......
+
+
 <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.7.js"></script>
 
 
@@ -13,4 +23,31 @@ subscribeKey: 'pub-c-b3c83e84-5548-48ac-bb78-70aa483770db'
 
 });
 
+// Publish a simple message to the “demo_tutorial” channel pubnub:
+
+pubnubDemo.publish({
+  message: { "color" : "blue" },
+  channel: 'demo_tutorial' }
+  );
+
+  pubnubDemo.addListener({
+
+  message: function(message){
+
+  console.log(message)
+
+  }
+
+  })
+
+  pubnubDemo.subscribe({
+
+  channels: ['demo_tutorial']
+
+  });
+
 </script>
+
+</body>
+
+</html>
